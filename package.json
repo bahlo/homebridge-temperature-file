@@ -1,0 +1,17 @@
+{
+  "name": "homebridge-dht",
+  "version": "1.0.0",
+  "description": "Access a DHT sensor from HomeKit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "author": "Arne Bahlo <hallo@arne.me>",
+  "license": "MIT",
+  "dependencies": {
+    "node-dht-sensor": "0.0.8"
+  }
+}
