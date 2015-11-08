@@ -10,8 +10,5 @@
     "homebridge-plugin"
   ],
   "author": "Arne Bahlo <hallo@arne.me>",
-  "license": "MIT",
-  "dependencies": {
-    "node-dht-sensor": "0.0.8"
-  }
+  "license": "MIT"
 }

@@ -1,4 +1,4 @@
-var sensorLib = require('node-dht-sensor');
+var fs = require('fs');
 var Service, Characteristic;
 
 module.exports = function(homebridge) {
@@ -11,9 +11,7 @@ module.exports = function(homebridge) {
 function DHTAccessory(log, config) {
   this.log = log;
   this.name = config["name"];
-  this.type = config["type"];
-  this.pin = config["pin"];
-  this.sensor = sensorLib.initialize(type, pin);
+  this.filePath = config["file_path"];
 
   this.service = new Service.TemperatureSensor(this.name);
 
@@ -23,8 +21,14 @@ function DHTAccessory(log, config) {
 }
 
 DHTAccessory.prototype.getState = function(callback) {
-  var readout = this.sensor.read();
-  callback(null, readout.temperature.toFixed(2));
+  fs.readFile(this.filePath, 'utf8', function(err, data) {
+    if (err) {
+      callback(err);
+      return
+    }
+
+    callback(null, parseFloat(data))
+  })
 }
 
 DHTAccessory.prototype.getServices = function() {
