@@ -1,7 +1,7 @@
 {
-  "name": "homebridge-dht",
+  "name": "homebridge-temperature-file",
   "version": "1.0.0",
-  "description": "Access a DHT sensor from HomeKit",
+  "description": "Simulate a temperature sensor from file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

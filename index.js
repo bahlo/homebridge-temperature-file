@@ -5,10 +5,10 @@ module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
 
-  homebridge.registerAccessory("homebridge-dht", "DHT", DHTAccessory);
+  homebridge.registerAccessory("homebridge-temperature-file", "TemperatureFile", TemperatureFileAccessory);
 }
 
-function DHTAccessory(log, config) {
+function TemperatureFileAccessory(log, config) {
   this.log = log;
   this.name = config["name"];
   this.filePath = config["file_path"];
@@ -20,7 +20,7 @@ function DHTAccessory(log, config) {
     .on('get', this.getState.bind(this));
 }
 
-DHTAccessory.prototype.getState = function(callback) {
+TemperatureFileAccessory.prototype.getState = function(callback) {
   fs.readFile(this.filePath, 'utf8', function(err, data) {
     if (err) {
       callback(err);
@@ -31,6 +31,6 @@ DHTAccessory.prototype.getState = function(callback) {
   })
 }
 
-DHTAccessory.prototype.getServices = function() {
+TemperatureFileAccessory.prototype.getServices = function() {
   return [this.service];
 }
