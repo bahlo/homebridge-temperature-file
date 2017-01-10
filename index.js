@@ -4,6 +4,7 @@ var Service, Characteristic;
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
+Characteristic.props.minValue = -100;
   homebridge.registerAccessory("homebridge-temperature-file", "TemperatureFile", TemperatureFileAccessory);
 }
 
@@ -17,7 +18,6 @@ function TemperatureFileAccessory(log, config) {
   this.service
     .getCharacteristic(Characteristic.CurrentTemperature)
     .on('get', this.getState.bind(this));
-	Characteristic.CurrentTemperature.props.minValue = -100;
 	
 }
 
