@@ -17,7 +17,8 @@ function TemperatureFileAccessory(log, config) {
   this.service
     .getCharacteristic(Characteristic.CurrentTemperature)
     .on('get', this.getState.bind(this));
-	Characteristic.CurrentTemperature.props.minValue = targetMinValue;
+	Characteristic.CurrentTemperature.props.minValue = -100;
+	
 }
 
 TemperatureFileAccessory.prototype.getState = function(callback) {
