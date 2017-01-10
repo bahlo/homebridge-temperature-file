@@ -16,10 +16,9 @@ function TemperatureFileAccessory(log, config) {
   // this.service.getCharacteristic(Characteristic.CurrentTemperature)
   //  .on('get', this.getState.bind(this));
 
-  function this.service.getCharacteristic(Characteristic.CurrentTemperature) {
-	.on('get', this.getState.bind(this));
-	.setProps({ minValue: -100 });
-  };
+  var c =  this.service.getCharacteristic(Characteristic.CurrentTemperature);
+	c.on('get', this.getState.bind(this));
+	c.setProps({ minValue: -100 });
 }
 
 TemperatureFileAccessory.prototype.getState = function(callback) {
