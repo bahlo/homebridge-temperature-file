@@ -13,11 +13,11 @@ function TemperatureFileAccessory(log, config) {
   this.filePath = config["file_path"];
 
   this.service = new Service.TemperatureSensor(this.name);
-  this.service.getCharacteristic(Characteristic.CurrentTemperature)
-    .on('get', this.getState.bind(this));
+  // this.service.getCharacteristic(Characteristic.CurrentTemperature)
+  //  .on('get', this.getState.bind(this));
 
-	var c = service.getCharacteristic(Characteristic.CurrentTemperature)
-		.on('get', this.getState.bind(this));
+  var c = this.service.getCharacteristic(Characteristic.CurrentTemperature);
+	c.on('get', this.getState.bind(this));
 
 	c.setProps({ minValue: -100 });
 	
