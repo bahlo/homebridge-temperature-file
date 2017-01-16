@@ -10,7 +10,7 @@ module.exports = function(homebridge) {
 function TemperatureFileAccessory(log, config) {
   this.log = log;
   this.name = config["name"];
-  this.filePath = config["file_path"];
+  this.filePath = config["file_path"] || config["file"];
 
   this.service = new Service.TemperatureSensor(this.name);
 
